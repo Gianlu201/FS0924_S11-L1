@@ -1,11 +1,21 @@
 import { Col, Container, ListGroup } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { Trash } from 'react-bootstrap-icons';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const FavouriteCompanies = () => {
   const content = useSelector((state) => {
     return state.favCompanies;
   });
+
+  const dispatch = useDispatch();
+
+  const removeFromFavourite = (companyName) => {
+    dispatch({
+      type: 'REMOVE_FROM_FAVOURITE',
+      payload: companyName,
+    });
+  };
 
   return (
     <Container>
@@ -15,6 +25,12 @@ const FavouriteCompanies = () => {
           {content.map((company, i) => {
             return (
               <ListGroup.Item key={i}>
+                <Trash
+                  className='icon me-2'
+                  onClick={() => {
+                    removeFromFavourite(company);
+                  }}
+                />
                 <Link to={`/company/${company}`}>{company}</Link>
               </ListGroup.Item>
             );

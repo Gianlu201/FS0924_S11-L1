@@ -7,7 +7,6 @@ const Job = ({ data }) => {
   const dispatch = useDispatch();
 
   const addToFavourite = (data) => {
-    console.log(data.company_name);
     dispatch({
       type: 'ADD_TO_FAVOURITE',
       payload: data.company_name,
@@ -21,7 +20,7 @@ const Job = ({ data }) => {
     >
       <Col xs={3}>
         <Bookmark
-          className='me-2'
+          className='icon me-2'
           onClick={() => {
             addToFavourite(data);
           }}

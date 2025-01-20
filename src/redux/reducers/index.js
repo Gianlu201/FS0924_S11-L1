@@ -10,6 +10,14 @@ const mainReducer = (state = initialState, action) => {
         favCompanies: state.favCompanies.concat(action.payload),
       };
 
+    case 'REMOVE_FROM_FAVOURITE':
+      return {
+        ...state,
+        favCompanies: state.favCompanies.filter((comp) => {
+          return comp !== action.payload;
+        }),
+      };
+
     default:
       return state;
   }
