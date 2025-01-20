@@ -1,4 +1,4 @@
-import { Col, Container, ListGroup } from 'react-bootstrap';
+import { Alert, Col, Container, ListGroup } from 'react-bootstrap';
 import { Trash } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -36,6 +36,12 @@ const FavouriteCompanies = () => {
             );
           })}
         </ListGroup>
+
+        {content.length === 0 && (
+          <Alert variant='secondary' className='lead'>
+            No company in your favourites
+          </Alert>
+        )}
       </Col>
     </Container>
   );
